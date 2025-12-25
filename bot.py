@@ -73,7 +73,8 @@ def send_map(message):
 @bot.message_handler(commands=['time'])
 def send_time(message):
     data = requests.get("https://api.climateclock.world/v1/clock").json()
-    time = data['data']['modules']['deadline1']['timestamp']
+    print(data)
+    time = data['data']['modules']['carbon_deadline_1']['timestamp']
     time = datetime.datetime.fromisoformat(time.replace('Z', '+03:00'))
     bot.send_message(message.chat.id,
                     time - datetime.datetime.now(time.tzinfo))
